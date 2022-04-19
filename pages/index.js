@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <div className="">
-        <Image src="https://i.imgur.com/5iO8Mcl.png" className="sm:h-screen" />
+        <Image src="https://i.imgur.com/5iO8Mcl.png" className="sm:h-screen" alt="oscar background image"/>
       </div>
 
       <div className="absolute sm:top-48 sm:right-20 top-32 right-0 mx-5">
