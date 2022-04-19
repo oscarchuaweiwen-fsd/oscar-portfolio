@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from "react";
-import { HamburgerIcon } from "@chakra-ui/icons";
-import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
+import { Link } from 'react-scroll'
 
 function Navbar() {
   
