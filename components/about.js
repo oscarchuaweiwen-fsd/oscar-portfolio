@@ -10,8 +10,8 @@ function About() {
 
       <div className="mt-5 sm:justify-between mx-5 flex flex-col sm:flex-row items-center sm:items-start">
         <div className="text-justify">
-          Hello! my name is Oscar and currently i'm working as a Product
-          Engineer (Intern) in Hatio Sea Sdn Bhd. I'm final year student (BSc
+          Hello! my name is Oscar and currently i&apos;m working as a Product
+          Engineer (Intern) in Hatio Sea Sdn Bhd. I&apos;m final year student (BSc
           Software Engineering with Honours ) at University Malaysia Pahang. 
         </div>
 
