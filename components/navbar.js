@@ -97,6 +97,7 @@ function Navbar() {
                   delay={500}
                   duration={2000}
                   spyThrottle={500}
+                  className="hover:underline underline-offset-4"
                 >
                   {res.data}
                 </Link>

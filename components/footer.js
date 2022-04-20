@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Link } from "@chakra-ui/react";
+import { Link } from "@chakra-ui/react";
 import {BsFacebook,BsInstagram,BsGithub,BsLinkedin} from 'react-icons/bs'
 
 function Footer() {
@@ -26,14 +26,12 @@ function Footer() {
     },
   ];
   return (
-    <div className="bg-footer w-full h-48 sm:flex flex flex-col sm:flex-row sm:items-center sm:justify-around justify-center mt-5">
+    <div className="bg-footer w-full sm:h-32  h-56 sm:flex flex flex-col sm:flex-row sm:items-center sm:justify-around justify-center mt-5">
       <div className="flex justify-center">
-        Designed By{" "}
-        <span className="font-semibold">&nbsp;Oscar Chua Wei Wen&nbsp;</span>{" "}
-        &copy; 2022
+        &copy; 2022 <span className="font-semibold">&nbsp;Oscar Chua Wei Wen</span>. All Rights Reserved.
       </div>
 
-      <div className="flex justify-center mt-5 gap-2">
+      <div className="flex justify-center sm:mt-0 mt-3 sm:gap-4 gap-2">
         {logoData.map((res) => {
           return (
             <Link className={res.size} href={res.url} target="_blank" key={res.url}>
