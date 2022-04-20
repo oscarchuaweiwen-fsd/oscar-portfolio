@@ -9,7 +9,8 @@ module.exports = {
         '500':'700px'
       },
       colors:{
-        'js':'#f0db4f'
+        'js':'#f0db4f',
+        'footer':"#252528"
       }
     },
   },

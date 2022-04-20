@@ -1,31 +1,36 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-scroll";
-import { Menu, MenuButton, MenuList, IconButton } from "@chakra-ui/react";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  IconButton,
+  Image,
+} from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 
 function Navbar() {
   const [height, setHeight] = useState(0);
 
   const desktopViewData = [
     {
-      data:"About",
-      duration:1.5
+      data: "About",
+      duration: 1.5,
     },
     {
-      data:"Experience",
-      duration:1.8
+      data: "Experience",
+      duration: 1.8,
     },
     {
-      data:"Work",
-      duration:2.1
+      data: "Work",
+      duration: 2.1,
     },
     {
-      data:"Contact",
-      duration:2.4
-    }
-  ]
-
+      data: "Contact",
+      duration: 2.4,
+    },
+  ];
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -39,8 +44,6 @@ function Navbar() {
     };
   }, []);
 
-  
-
   const toggleFixedScroll = () => {
     if (height > 100) {
       return "fixed flex justify-between w-full px-5 py-5 backdrop-blur-md z-10";
@@ -51,44 +54,63 @@ function Navbar() {
   return (
     <div id="/">
       <div className={toggleFixedScroll()}>
-        <Link
-          activeClass="active"
-          to="/"
-          spy={true}
-          smooth={true}
-          offset={100}
-          duration={2000}
-          className="mt-2 sm:mt-0"
-        >
-          Oscar Chua Wei Wen
-        </Link>
-
-        {/* Desktop View */}
-        <div className="sm:flex gap-5 pr-10 cursor-pointer hidden ">
-         
-        
-
-         {desktopViewData.map(res=>{
-           return(
-            <motion.div animate={{y:[-1000,0]}} transition={{ease: "easeOut",duration:res.duration}} key={res.data}>
+        <div className="flex items-center gap-2">
+          <motion.div animate={{rotate:360}} transition={{ duration: 2,repeat:Infinity,delay:0.4 }}>
+            <Image
+              src="./oscaricon2.png"
+              alt="oscar background image"
+              width="40px"
+              height="40px"
+              className=""
+            />
+          </motion.div>
+          <div>
             <Link
               activeClass="active"
-              to="about"
+              to="/"
               spy={true}
               smooth={true}
               offset={100}
-              delay={500}
               duration={2000}
-              spyThrottle={500}
+              className="mt-2 sm:mt-0"
             >
-              {res.data}
+              Oscar Chua Wei Wen
             </Link>
-            </motion.div>
-           )
-         })}
-          
+          </div>
+        </div>
+
+        {/* Desktop View */}
+        <div className="sm:flex gap-5 pr-10 cursor-pointer hidden mt-2P">
+          {desktopViewData.map((res) => {
+            return (
+              <motion.div
+                animate={{ y: [-1000, 0] }}
+                transition={{ ease: "easeOut", duration: res.duration }}
+                key={res.data}
+              >
+                <Link
+                  activeClass="active"
+                  to="about"
+                  spy={true}
+                  smooth={true}
+                  offset={100}
+                  delay={500}
+                  duration={2000}
+                  spyThrottle={500}
+                >
+                  {res.data}
+                </Link>
+              </motion.div>
+            );
+          })}
+
           <div className="opacity-50">
-            <a href="" target="_blank" rel="noreferrer" className="disabled pointer-events-none">
+            <a
+              href=""
+              target="_blank"
+              rel="noreferrer"
+              className="disabled pointer-events-none"
+            >
               Resume
             </a>
           </div>
