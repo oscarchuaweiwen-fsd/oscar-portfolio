@@ -40,6 +40,7 @@ export default function Home() {
         <title>Oscar Chua Wei Wen | Portfolio</title>
         <meta name="description" content="Oscar's portfolio" />
         <link rel="icon" href="/oscaricon2.png" />
+      
       </Head>
 
       <Navbar />
