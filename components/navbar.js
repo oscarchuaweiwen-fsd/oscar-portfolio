@@ -53,7 +53,7 @@ function Navbar() {
   };
   return (
     <div id="/">
-      <div className={toggleFixedScroll()}>
+      <motion.div className={toggleFixedScroll()}>
         <div className="flex items-center gap-2">
           <motion.div animate={{rotate:360}} transition={{ duration: 2,repeat:Infinity,delay:0.4 }}>
             <Image
@@ -80,7 +80,7 @@ function Navbar() {
         </div>
 
         {/* Desktop View */}
-        <div className="sm:flex gap-5 pr-10 cursor-pointer hidden mt-2P">
+        <div className="sm:flex gap-5 pr-10 cursor-pointer hidden mt-2" >
           {desktopViewData.map((res) => {
             return (
               <motion.div
@@ -151,7 +151,7 @@ function Navbar() {
             </MenuList>
           </Menu>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
