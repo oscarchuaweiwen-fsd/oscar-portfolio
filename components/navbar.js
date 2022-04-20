@@ -1,14 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { Link } from "react-scroll";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  IconButton,
-} from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, IconButton } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import {motion} from 'framer-motion'
+
 function Navbar() {
   const [height, setHeight] = useState(0);
+
+  const desktopViewData = [
+    {
+      data:"About",
+      duration:1.5
+    },
+    {
+      data:"Experience",
+      duration:1.8
+    },
+    {
+      data:"Work",
+      duration:2.1
+    },
+    {
+      data:"Contact",
+      duration:2.4
+    }
+  ]
+
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -21,6 +38,8 @@ function Navbar() {
       window.addEventListener("scroll", () => {});
     };
   }, []);
+
+  
 
   const toggleFixedScroll = () => {
     if (height > 100) {
@@ -46,21 +65,30 @@ function Navbar() {
 
         {/* Desktop View */}
         <div className="sm:flex gap-5 pr-10 cursor-pointer hidden ">
-          <Link
-            activeClass="active"
-            to="about"
-            spy={true}
-            smooth={true}
-            offset={100}
-            duration={2000}
-          >
-            About
-          </Link>
-          <div>Experience</div>
-          <div>Work</div>
-          <div>Contact</div>
-          <div className="">
-            <a href="./tawaran.pdf" target="_blank" rel="noreferrer">
+         
+        
+
+         {desktopViewData.map(res=>{
+           return(
+            <motion.div animate={{y:[-1000,0]}} transition={{ease: "easeOut",duration:res.duration}} key={res.data}>
+            <Link
+              activeClass="active"
+              to="about"
+              spy={true}
+              smooth={true}
+              offset={100}
+              delay={500}
+              duration={2000}
+              spyThrottle={500}
+            >
+              {res.data}
+            </Link>
+            </motion.div>
+           )
+         })}
+          
+          <div className="opacity-50">
+            <a href="" target="_blank" rel="noreferrer" className="disabled pointer-events-none">
               Resume
             </a>
           </div>
@@ -76,7 +104,28 @@ function Navbar() {
               variant="outline"
             />
             <MenuList>
-             
+              <Link
+                activeClass="active"
+                to="about"
+                spy={true}
+                smooth={true}
+                offset={100}
+                duration={2000}
+                className="block p-2 hover:opacity-30"
+              >
+                About
+              </Link>
+              <Link
+                activeClass="active"
+                to="about"
+                spy={true}
+                smooth={true}
+                offset={100}
+                duration={2000}
+                className="block p-2 hover:opacity-30"
+              >
+                Experience
+              </Link>
             </MenuList>
           </Menu>
         </div>
