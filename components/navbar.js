@@ -110,7 +110,7 @@ function Navbar() {
               href=""
               target="_blank"
               rel="noreferrer"
-              className="disabled pointer-events-none"
+              className="pointer-events-none cursor-not-allowed"
             >
               Resume
             </a>
