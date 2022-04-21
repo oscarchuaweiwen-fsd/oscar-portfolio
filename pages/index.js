@@ -6,6 +6,7 @@ import Footer from '../components/footer'
 import BackgroundImage from "../components/backgroundimage";
 import BackgroundText from '../components/backgroundtext';
 import Typed from 'typed.js';
+import Experience from "../components/experience";
 
 export default function Home() {
   const el = useRef(null);
@@ -50,6 +51,9 @@ export default function Home() {
       <BackgroundText el={el}/>
 
       <About />
+
+      <Experience/>
+
 
       <Footer/>
     </div>

@@ -17,18 +17,41 @@ function Navbar() {
     {
       data: "About",
       duration: 1.5,
+      id:"about"
     },
     {
       data: "Experience",
       duration: 1.8,
+      id:"experience"
     },
     {
       data: "Work",
       duration: 2.1,
+      id:"work"
     },
     {
       data: "Contact",
       duration: 2.4,
+      id:"contact"
+    },
+  ];
+
+  const mobileViewData = [
+    {
+      data: "About",
+      id:"about"
+    },
+    {
+      data: "Experience",
+      id:"experience"
+    },
+    {
+      data: "Work",
+      id:"work"
+    },
+    {
+      data: "Contact",
+      id:"contact"
     },
   ];
 
@@ -90,10 +113,9 @@ function Navbar() {
               >
                 <Link
                   activeClass="active"
-                  to="about"
+                  to={res.id}
                   spy={true}
                   smooth={true}
-                  offset={100}
                   delay={500}
                   duration={2000}
                   spyThrottle={500}
@@ -127,28 +149,22 @@ function Navbar() {
               variant="outline"
             />
             <MenuList>
-              <Link
-                activeClass="active"
-                to="about"
-                spy={true}
-                smooth={true}
-                offset={100}
-                duration={2000}
-                className="block p-2 hover:opacity-30"
-              >
-                About
-              </Link>
-              <Link
-                activeClass="active"
-                to="about"
-                spy={true}
-                smooth={true}
-                offset={100}
-                duration={2000}
-                className="block p-2 hover:opacity-30"
-              >
-                Experience
-              </Link>
+              {mobileViewData.map(res=>{
+                return(
+                  <Link
+                  activeClass="active"
+                  to={res.id}
+                  spy={true}
+                  smooth={true}
+                  offset={100}
+                  duration={2000}
+                  className="block p-2 hover:opacity-30"
+                  key={res.data}
+                >
+                  {res.data}
+                </Link>
+                )
+              })}
             </MenuList>
           </Menu>
         </div>
