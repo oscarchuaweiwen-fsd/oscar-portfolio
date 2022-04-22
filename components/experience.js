@@ -50,7 +50,7 @@ function Experience() {
             );
           })}
         </div>
-        <div className="mt-2 ml-5">
+        <div className="mt-2 sm:ml-5">
           {jobs
             .filter((res) => res.id == active)
             .map((res) => {
@@ -66,7 +66,7 @@ function Experience() {
                   <div>
                     <ul className="list-disc ml-3 mt-2">
                       {res.description.map((res) => {
-                        return <li key={res}>{res}</li>;
+                        return <li key={res} className="text-justify">{res}</li>;
                       })}
                     </ul>
                   </div>

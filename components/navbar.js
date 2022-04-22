@@ -93,7 +93,6 @@ function Navbar() {
               to="/"
               spy={true}
               smooth={true}
-              offset={100}
               duration={2000}
               className="mt-2 sm:mt-0"
             >
@@ -156,7 +155,6 @@ function Navbar() {
                   to={res.id}
                   spy={true}
                   smooth={true}
-                  offset={100}
                   duration={2000}
                   className="block p-2 hover:opacity-30"
                   key={res.data}
