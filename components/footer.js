@@ -7,7 +7,7 @@ function Footer() {
     {
       imageUrl: <BsGithub/>,
       url: "https://github.com/oscarchuaweiwen-fsd",
-      size: "text-xl hover:animate-pulse hover:text-grey",
+      size: "text-xl hover:animate-pulse",
     },
     {
       imageUrl: <BsLinkedin/>,
@@ -26,7 +26,7 @@ function Footer() {
     },
   ];
   return (
-    <div className="bg-footer w-full sm:h-32  h-56 sm:flex flex flex-col sm:flex-row sm:items-center sm:justify-around justify-center mt-5">
+    <div className="bg-footer w-full sm:h-32  h-56 sm:flex flex flex-col sm:flex-row sm:items-center sm:justify-around justify-center mt-5 z-40">
       <div className="flex justify-center">
         &copy; 2022 <span className="font-semibold">&nbsp;Oscar Chua Wei Wen</span>. All Rights Reserved.
       </div>

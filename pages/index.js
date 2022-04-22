@@ -7,6 +7,7 @@ import BackgroundImage from "../components/backgroundimage";
 import BackgroundText from '../components/backgroundtext';
 import Typed from 'typed.js';
 import Experience from "../components/experience";
+import Work from "../components/work";
 
 export default function Home() {
   const el = useRef(null);
@@ -54,7 +55,8 @@ export default function Home() {
 
       <Experience/>
 
-
+      <Work/>
+      
       <Footer/>
     </div>
   );
