@@ -8,8 +8,8 @@ export default async function handler(req, res) {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-          user: "oscarchuaweiwen.personal@gmail.com", // generated ethereal user
-          pass: "Joanne@020919", // generated ethereal password
+          user: process.env.GMAIL, // generated ethereal user
+          pass: process.env.GMAIL_PASSWORD, // generated ethereal password
         },
       });
       try {
