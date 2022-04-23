@@ -1,7 +1,6 @@
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
-    console.log(process.env.GMAIL_PASSWORD,process.env.GMAIL_PASSWORD)
       
         let transporter = nodemailer.createTransport({
           host: "smtp.gmail.com",
@@ -42,5 +41,6 @@ export default async function handler(req, res) {
             res.status(200).json({ messageSent: true })
           }
       
-   
+          console.log(process.env.GMAIL_PASSWORD,process.env.GMAIL_PASSWORD)
+          return process.env.GMAIL
   }
