@@ -2,17 +2,16 @@ import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
     console.log(process.env.GMAIL_PASSWORD,process.env.GMAIL_PASSWORD)
-
-    let transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false, // true for 465, false for other ports
-        auth: {
-          user: process.env.GMAIL, // generated ethereal user
-          pass: process.env.GMAIL_PASSWORD, // generated ethereal password
-        },
-      });
       try {
+        let transporter = nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          port: 587,
+          secure: false, // true for 465, false for other ports
+          auth: {
+            user: process.env.GMAIL, // generated ethereal user
+            pass: process.env.GMAIL_PASSWORD, // generated ethereal password
+          },
+        });
         let info = await transporter.sendMail({
             from: '"No Reply 👻" <noreply@example.com>', // sender address
             to: "oscarchuaweiwen.personal@gmail.com,limjoanne379@gmail.com", // list of receivers
