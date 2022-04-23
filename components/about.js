@@ -119,7 +119,7 @@ function About() {
               })}
             </SimpleGrid>
           </div>
-         <Code className="mt-3 animate-pulse "><span className="text-js">&quot;Practice makes Perfect&quot;</span></Code>
+             
         </div>
 
         <div className="order-1 mb-3 sm:mb-0 sm:order-none">

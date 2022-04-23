@@ -126,16 +126,16 @@ function Navbar() {
             );
           })}
 
-          <div className="opacity-50">
+          <motion.div className="" animate={{y:[-1000,0]}} transition={{ease:"easeOut" ,duration:2.7}}>
             <a
-              href=""
+              href="/resume_oscar.pdf"
               target="_blank"
               rel="noreferrer"
-              className="pointer-events-none cursor-not-allowed"
+              className=""
             >
               Resume
             </a>
-          </div>
+          </motion.div>
         </div>
 
         {/* Mobile View */}
@@ -163,6 +163,17 @@ function Navbar() {
                 </Link>
                 )
               })}
+
+              <div className="block p-2 hover:opacity-30">
+              <a
+              href="/resume_oscar.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className=""
+            >
+              Resume
+            </a>
+              </div>
             </MenuList>
           </Menu>
         </div>
