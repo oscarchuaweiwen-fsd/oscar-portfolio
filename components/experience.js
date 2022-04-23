@@ -1,7 +1,35 @@
-import React, { useState } from "react";
-
+import React, { useState,useEffect } from "react";
+import { useInView } from 'react-intersection-observer';
+import {motion,useAnimation} from 'framer-motion'
 function Experience() {
   const [active, setActive] = useState(1);
+  const animationHook = useAnimation();
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0.3,
+  });
+
+  useEffect(()=>{
+    console.log(inView)
+    
+
+        if(inView){
+            animationHook.start({
+              x:0,
+              transition:{
+                type:'spring',duration:2,bounce:0.3
+              }
+            })
+
+           
+        }
+        if(!inView){
+          animationHook.start({
+            x:'-100vw'
+          })
+        }
+
+  },[inView,animationHook])
 
   const jobs = [
     {
@@ -20,9 +48,11 @@ function Experience() {
   ];
 
   return (
-    <div
+    <div ref={ref}>
+<motion.div
       className="sm:w-full sm:flex sm:justify-center mx-5 sm:mx-0"
       id="experience"
+animate={animationHook}
     >
       <div>
         <div className="sm:text-3xl text-xl font-bold underline underline-offset-4 mx-5 sm:mt-10 mt-5">
@@ -83,7 +113,9 @@ function Experience() {
           </div>
         </div>
       </div>
+    </motion.div>
     </div>
+    
   );
 }
 

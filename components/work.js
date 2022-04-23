@@ -1,10 +1,38 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { SimpleGrid, Image, Tag, Link } from "@chakra-ui/react";
 import { BiLinkExternal } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
-import { motion } from "framer-motion";
+import { useInView } from 'react-intersection-observer';
+import {motion,useAnimation} from 'framer-motion'
 
 function Work() {
+  const animationHook = useAnimation();
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0.3,
+  });
+
+  useEffect(()=>{
+    console.log(inView)
+    
+
+        if(inView){
+            animationHook.start({
+              x:0,
+              transition:{
+                type:'spring',duration:2,bounce:0.3
+              }
+            })
+
+           
+        }
+        if(!inView){
+          animationHook.start({
+            x:'-100vw'
+          })
+        }
+
+  },[inView,animationHook])
   const works = [
     {
       category: "Featured Project",
@@ -20,11 +48,12 @@ function Work() {
   ];
 
   return (
-    <motion.div
+    <div ref={ref}>
+       <motion.div
       className="sm:mx-36 mx-5 z-50 sm:w-3/4 flex flex-col justify-center content-center mb-10"
       id="work"
-      animate={{ x: [-1000, 0] }}
-      translate={{ duration: 2 }}
+      animate={animationHook}
+     
     >
       <div className="sm:text-3xl text-xl font-bold underline underline-offset-4 mx-5 sm:mt-10 mt-5">
         Works
@@ -82,6 +111,8 @@ function Work() {
         );
       })}
     </motion.div>
+    </div>
+   
   );
 }
 

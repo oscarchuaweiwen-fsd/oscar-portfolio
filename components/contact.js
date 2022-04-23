@@ -104,7 +104,7 @@ function Contact() {
               )}
 
               <FormLabel htmlFor="contact">Contact number</FormLabel>
-              <Input id="contact" type="number" {...register("contact")} />
+              <Input id="contact" type="number" minLength="10" maxLength="11" {...register("contact")} />
               {!errors.contact?.message ? (
                 <FormHelperText>
                   We&apos;ll never share your contact number.
