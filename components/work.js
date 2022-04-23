@@ -2,6 +2,7 @@ import React from "react";
 import { SimpleGrid, Image, Tag, Link } from "@chakra-ui/react";
 import { BiLinkExternal } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
+import { motion } from "framer-motion";
 
 function Work() {
   const works = [
@@ -12,15 +13,18 @@ function Work() {
         "UMPSCMS is a management system that works between UMP Students, UMP Cafeteria and Suppliers, and the UMP Cafeteria will be going thru the ordering page to manage their stock of raw materials and ordering from the supplier.",
       techStack: ["Angular", "Firebase", "NodeJs"],
       pictureURL: "./project1.png",
-      githubLink: "https://github.com/oscarchuaweiwen-fsd/-Angular-UMPCafeSupplyChainManagementSystem",
+      githubLink:
+        "https://github.com/oscarchuaweiwen-fsd/-Angular-UMPCafeSupplyChainManagementSystem",
       websiteLink: "https://ump-cafe-supply-chain.web.app/",
     },
   ];
 
   return (
-    <div
+    <motion.div
       className="sm:mx-36 mx-5 z-50 sm:w-3/4 flex flex-col justify-center content-center mb-10"
       id="work"
+      animate={{ x: [-1000, 0] }}
+      translate={{ duration: 2 }}
     >
       <div className="sm:text-3xl text-xl font-bold underline underline-offset-4 mx-5 sm:mt-10 mt-5">
         Works
@@ -29,12 +33,16 @@ function Work() {
         return (
           <SimpleGrid
             columns={[1, null, 2]}
-            className="mx-5 mt-5 "
+            className="mx-5 mt-5 flex "
             key={res.title}
           >
-            <div className="">
+            <motion.div
+              className="hover:z-50 backdrop-grayscale hover:backdrop-grayscale-0 "
+              whileHover={{ scale: 1.2 }}
+              translate={{ duration: 2000 }}
+            >
               <Image src={res.pictureURL} alt="" className="rounded-md mt-5" />
-            </div>
+            </motion.div>
             <div className="relative">
               <div className="text-right text-js mt-3 font-semibold">
                 {res.category}
@@ -42,7 +50,7 @@ function Work() {
 
               <div className="text-right font-bold mt-1">{res.title}</div>
 
-              <div className="sm:text-right text-justify mt-1 bg-footer sm:p-5 p-3 sm:-ml-10 rounded-md drop-shadow-xl">
+              <div className="sm:text-right text-justify mt-1 bg-footer sm:p-5 p-3 sm:-ml-10 rounded-md drop-shadow-2xl">
                 {res.description}
               </div>
 
@@ -73,7 +81,7 @@ function Work() {
           </SimpleGrid>
         );
       })}
-    </div>
+    </motion.div>
   );
 }
 

@@ -8,6 +8,8 @@ import BackgroundText from '../components/backgroundtext';
 import Typed from 'typed.js';
 import Experience from "../components/experience";
 import Work from "../components/work";
+import Contact from "../components/contact";
+
 
 export default function Home() {
   const el = useRef(null);
@@ -56,6 +58,8 @@ export default function Home() {
       <Experience/>
 
       <Work/>
+
+      <Contact/>
       
       <Footer/>
     </div>
