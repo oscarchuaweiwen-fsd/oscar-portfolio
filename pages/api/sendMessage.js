@@ -5,6 +5,7 @@ export default async function handler(req, res) {
     service: "Outlook365",
     host: "smtp.office365.com",
     port: "587",
+    secure:false,
     tls: {
       ciphers: "SSLv3",
       rejectUnauthorized: false,
