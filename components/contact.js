@@ -1,14 +1,16 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
   FormControl,
   FormLabel,
   FormErrorMessage,
   FormHelperText,
   Input,
-  Button,Textarea,Badge,
-  useToast
+  Button,
+  Textarea,
+  Badge,
+  useToast,
 } from "@chakra-ui/react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Joi from "joi";
 
@@ -17,57 +19,61 @@ const schema = Joi.object({
     .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
     .required(),
   contact: Joi.number().integer().required(),
-  message: Joi.string().required()
+  message: Joi.string().required(),
 });
 
-function Contact({data}) {
-console.log(data)
-const toast = useToast()
-   const [length,setLength] = useState(0);
-    const [loading,setLoading] = useState(false)
+function Contact() {
+  const toast = useToast();
+  const [length, setLength] = useState(0);
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
+    control,
   } = useForm({
     resolver: joiResolver(schema),
   });
 
+  let message = useWatch({ control, name: "message" });
+
   const onSubmit = async (formData) => {
     console.log(formData);
-    setLoading(()=>{return true})
-    const response = await fetch('/api/sendMessage',{
-        method:"POST",
-        body:JSON.stringify(formData),
-        headers:{
-            'Content-Type': 'application/json'
-        }
-    })
+    setLoading(() => {
+      return true;
+    });
+    const response = await fetch("/api/sendMessage", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-    const data = await response.json()
-    console.log(data)
-    if(data.messageSent){
-        toast({
-            title: 'Message sent.',
-            description: "Please kindly wait for your reply from Oscar, Thank you!",
-            status: 'success',
-            duration: 5000,
-            isClosable: true,
-          })
-        setLoading(()=>{return false})
-        reset({ email: "",contact:"",message:"" })
+    const data = await response.json();
+    console.log(data);
+    if (data.messageSent) {
+      toast({
+        title: "Message sent.",
+        description: "Please kindly wait for your reply from Oscar, Thank you!",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+      setLoading(() => {
+        return false;
+      });
+      reset({ email: "", contact: "", message: "" });
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
+    setLength((prev) => {
+      return message?.length;
+    });
+  }, [message?.length]);
 
-  },[])
-  let handleInputChange = (e) => {
-    let inputValue = e.target.value
-    console.log(inputValue.length)
-    setLength((prev)=>{return inputValue.length})
-  }
   return (
     <div
       className="sm:w-full sm:flex sm:justify-center mx-5 sm:mx-0"
@@ -79,9 +85,17 @@ const toast = useToast()
         </div>
 
         <div className=" sm:w-96 mx-5 mt-3">
-          <form onSubmit={handleSubmit(onSubmit)} action="/api/hello" method="POST">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            action="/api/hello"
+            method="POST"
+          >
             <FormControl
-              isInvalid={errors.email?.message || errors.contact?.message || errors.message?.message}
+              isInvalid={
+                errors.email?.message ||
+                errors.contact?.message ||
+                errors.message?.message
+              }
             >
               <FormLabel htmlFor="email">Email address</FormLabel>
               <Input id="email" type="email" {...register("email")} />
@@ -104,10 +118,14 @@ const toast = useToast()
               )}
 
               <FormLabel htmlFor="message">Message</FormLabel>
-              <Textarea maxLength="400" onChange={handleInputChange} {...register('message')} id="message" placeholder="Enter your message here..."/>
+              <Textarea
+                {...register("message")}
+                id="message"
+                placeholder="Enter your message here..."
+              />
               {!errors.message?.message ? (
                 <FormHelperText className="text-right">
-<Badge>{length}/400</Badge>
+                  <Badge>{length}/400</Badge>
                 </FormHelperText>
               ) : (
                 <FormErrorMessage>{errors.message?.message}</FormErrorMessage>
@@ -119,9 +137,15 @@ const toast = useToast()
                 className="mt-2"
                 variant="outline"
                 type="submit"
-                isLoading={loading?true:false}
+                isLoading={loading ? true : false}
                 loadingText="sending..."
-                disabled={(!errors.email?.message || !errors.contact?.message || !errors.message?.message)? false:true}
+                disabled={
+                  !errors.email?.message ||
+                  !errors.contact?.message ||
+                  !errors.message?.message
+                    ? false
+                    : true
+                }
               >
                 Submit
               </Button>
@@ -132,6 +156,5 @@ const toast = useToast()
     </div>
   );
 }
-
 
 export default Contact;

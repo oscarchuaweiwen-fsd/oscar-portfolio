@@ -16,8 +16,8 @@ export default async function handler(req, res) {
         let info = await transporter.sendMail({
             from: '"No Reply 👻" <noreply@example.com>', // sender address
             to: "oscarchuaweiwen.personal@gmail.com,limjoanne379@gmail.com", // list of receivers
-            subject: "Hello ✔", // Subject line
-            text: "Hello world?", // plain text body
+            subject: "Oscar's portfolio responses ✔", // Subject line
+            text: "Oscar's portfolio responses", // plain text body
             html: ` <body style="
             display: flex; 
             justify-content: center; 
