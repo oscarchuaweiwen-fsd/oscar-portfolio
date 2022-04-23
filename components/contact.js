@@ -125,7 +125,7 @@ function Contact() {
               />
               {!errors.message?.message ? (
                 <FormHelperText className="text-right">
-                  <Badge>{length}/400</Badge>
+                  <Badge>{length?length:0}/400</Badge>
                 </FormHelperText>
               ) : (
                 <FormErrorMessage>{errors.message?.message}</FormErrorMessage>
