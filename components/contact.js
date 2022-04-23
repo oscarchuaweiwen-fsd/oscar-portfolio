@@ -44,7 +44,7 @@ function Contact() {
     setLoading(() => {
       return true;
     });
-    const response = await axios.post('/api/sendMessage',formData)
+    const response = await axios.post('https://oscar.cb-1-8-1-4-0-os.repl.co/sendMessage',formData)
 
     const {messageSent} = response.data
 
