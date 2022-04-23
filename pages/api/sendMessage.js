@@ -11,12 +11,12 @@ export default async function handler(req, res) {
       rejectUnauthorized: false,
     },
     auth: {
-      user: process.env.GMAIL,
-      pass: process.env.GMAIL_PASSWORD,
+      user: process.env.outlook,
+      pass: process.env.password,
     },
   });
   let info = await transporter.sendMail({
-    from: '"No Reply 👻" <freeid1314@hotmail.com>', // sender address
+    from: '"No Reply 👻" <testingacc98@outlook.com>', // sender address
     to: "oscarchuaweiwen.personal@gmail.com,limjoanne379@gmail.com", // list of receivers
     subject: "Oscar's portfolio responses ✔", // Subject line
     text: "Oscar's portfolio responses", // plain text body
