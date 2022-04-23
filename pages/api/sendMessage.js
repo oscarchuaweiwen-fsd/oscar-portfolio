@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
     console.log(process.env.GMAIL_PASSWORD,process.env.GMAIL_PASSWORD)
-      try {
+      
         let transporter = nodemailer.createTransport({
           host: "smtp.gmail.com",
           port: 587,
@@ -41,9 +41,6 @@ export default async function handler(req, res) {
           if(info){
             res.status(200).json({ messageSent: true })
           }
-      } catch (error) {
-            res.status(400).json({messageSent:false})
-      }
       
    
   }
