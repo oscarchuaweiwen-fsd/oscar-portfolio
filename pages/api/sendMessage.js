@@ -1,26 +1,25 @@
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
-        
-          let transporter = nodemailer.createTransport({
-            service: "Outlook365",
-  host: "smtp.office365.com",
-  port: "587",
-  tls: {
-    ciphers: "SSLv3",
-    rejectUnauthorized: false,
-  },
-  auth: {
-    user: process.env.GMAIL,
-    pass: process.env.GMAIL_PASSWORD,
-  },
-          });
-          let info = await transporter.sendMail({
-              from: '"No Reply 👻" <freeid1314@hotmail.com>', // sender address
-              to: "oscarchuaweiwen.personal@gmail.com,limjoanne379@gmail.com", // list of receivers
-              subject: "Oscar's portfolio responses ✔", // Subject line
-              text: "Oscar's portfolio responses", // plain text body
-              html: ` <body style="
+  let transporter = nodemailer.createTransport({
+    service: "Outlook365",
+    host: "smtp.office365.com",
+    port: "587",
+    tls: {
+      ciphers: "SSLv3",
+      rejectUnauthorized: false,
+    },
+    auth: {
+      user: process.env.GMAIL,
+      pass: process.env.GMAIL_PASSWORD,
+    },
+  });
+  let info = await transporter.sendMail({
+    from: '"No Reply 👻" <freeid1314@hotmail.com>', // sender address
+    to: "oscarchuaweiwen.personal@gmail.com,limjoanne379@gmail.com", // list of receivers
+    subject: "Oscar's portfolio responses ✔", // Subject line
+    text: "Oscar's portfolio responses", // plain text body
+    html: ` <body style="
               display: flex; 
               justify-content: center; 
               align-items: center;">
@@ -39,10 +38,9 @@ export default async function handler(req, res) {
               </div>
                 <div>
               </body>`, // html body
-            });
-      
-            if(info){
-              res.status(200).json({ messageSent: true })
-            }
-        
+  });
+
+  if (info) {
+    res.status(200).json({ messageSent: true });
   }
+}
