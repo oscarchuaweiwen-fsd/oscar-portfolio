@@ -13,6 +13,7 @@ import {
 import { useForm, useWatch } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Joi from "joi";
+import axios from 'axios'
 
 const schema = Joi.object({
   email: Joi.string()
@@ -43,17 +44,12 @@ function Contact() {
     setLoading(() => {
       return true;
     });
-    const response = await fetch("/api/sendMessage", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await axios.post('/api/sendMessage',formData)
 
-    const data = await response.json();
-    console.log(data);
-    if (data.messageSent) {
+    const {messageSent} = response.data
+
+
+    if (messageSent) {
       toast({
         title: "Message sent.",
         description: "Please kindly wait for your reply from Oscar, Thank you!",
