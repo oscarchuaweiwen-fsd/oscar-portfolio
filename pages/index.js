@@ -11,10 +11,10 @@ import Work from "../components/work";
 import Contact from "../components/contact";
 
 
-export default function Home() {
+export default function Home({data}) {
   const el = useRef(null);
   const typed = useRef(null);
-
+console.log(data)
   useEffect(()=>{
     const options = {
     	strings: [
@@ -65,3 +65,4 @@ export default function Home() {
     </div>
   );
 }
+

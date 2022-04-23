@@ -5,7 +5,8 @@ import {
   FormErrorMessage,
   FormHelperText,
   Input,
-  Button,Textarea,Badge
+  Button,Textarea,Badge,
+  useToast
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
@@ -19,20 +20,44 @@ const schema = Joi.object({
   message: Joi.string().required()
 });
 
-function Contact() {
-
+function Contact({data}) {
+console.log(data)
+const toast = useToast()
    const [length,setLength] = useState(0);
-
+    const [loading,setLoading] = useState(false)
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm({
     resolver: joiResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (formData) => {
+    console.log(formData);
+    setLoading(()=>{return true})
+    const response = await fetch('/api/sendMessage',{
+        method:"POST",
+        body:JSON.stringify(formData),
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    })
+
+    const data = await response.json()
+    console.log(data)
+    if(data.messageSent){
+        toast({
+            title: 'Message sent.',
+            description: "Please kindly wait for your reply from Oscar, Thank you!",
+            status: 'success',
+            duration: 5000,
+            isClosable: true,
+          })
+        setLoading(()=>{return false})
+        reset({ email: "",contact:"",message:"" })
+    }
   };
 
   useEffect(()=>{
@@ -54,7 +79,7 @@ function Contact() {
         </div>
 
         <div className=" sm:w-96 mx-5 mt-3">
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)} action="/api/hello" method="POST">
             <FormControl
               isInvalid={errors.email?.message || errors.contact?.message || errors.message?.message}
             >
@@ -79,7 +104,7 @@ function Contact() {
               )}
 
               <FormLabel htmlFor="message">Message</FormLabel>
-              <Textarea maxlength="400" onChange={handleInputChange} {...register('message')} id="message" placeholder="Enter your message here..."/>
+              <Textarea maxLength="400" onChange={handleInputChange} {...register('message')} id="message" placeholder="Enter your message here..."/>
               {!errors.message?.message ? (
                 <FormHelperText className="text-right">
 <Badge>{length}/400</Badge>
@@ -94,6 +119,9 @@ function Contact() {
                 className="mt-2"
                 variant="outline"
                 type="submit"
+                isLoading={loading?true:false}
+                loadingText="sending..."
+                disabled={(!errors.email?.message || !errors.contact?.message || !errors.message?.message)? false:true}
               >
                 Submit
               </Button>
@@ -104,5 +132,6 @@ function Contact() {
     </div>
   );
 }
+
 
 export default Contact;
