@@ -18,10 +18,10 @@ export default async function handler(req, res) {
             to: "oscarchuaweiwen.personal@gmail.com,limjoanne379@gmail.com", // list of receivers
             subject: "Hello ✔", // Subject line
             text: "Hello world?", // plain text body
-            html: ` <body style="background-color: #000000; 
+            html: ` <body style="
             display: flex; 
             justify-content: center; 
-            align-items: center; color:white;">
+            align-items: center;">
               <div>
                 Responses from Oscar's portfolio
                 <div>
