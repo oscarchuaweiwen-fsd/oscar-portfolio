@@ -53,7 +53,7 @@ function Work() {
       techStack: ["NextJs", "Firebase", "NodeJs","GraphQL (Apollo Server)", "PostgreSQL", "Prisma2", "TailwindCSS","ChakraUi"],
       pictureURL: "",
       githubLink:
-        "",
+        "https://github.com/oscarchuaweiwen-fsd/tayaria-admin-panel",
       websiteLink: "",
     }
   ];
