@@ -46,7 +46,7 @@ function Work() {
       websiteLink: "https://ump-cafe-supply-chain.web.app/",
     },
     {
-      category: "HACK Project",
+      category: "HACKS Project",
       title: "Tayaria Stock and Profit Manangement System",
       description:
         "Tayaria Stock and Profit Management Application is an application that will manage all the stock arrangements between the sales in real-time to deliver the best experiences to users to supervise their stock to prevent out of stock and calculate all the profit from the daily sales.",
