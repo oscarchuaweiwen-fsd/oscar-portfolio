@@ -94,7 +94,7 @@ function Work() {
                 {res.description}
               </div>
 
-              <div className="mt-3 flex justify-end gap-3">
+              <div className="mt-3 flex justify-end gap-3 flex-wrap">
                 {res.techStack.map((res) => {
                   return <Tag key={res}>{res}</Tag>;
                 })}
