@@ -45,6 +45,17 @@ function Work() {
         "https://github.com/oscarchuaweiwen-fsd/-Angular-UMPCafeSupplyChainManagementSystem",
       websiteLink: "https://ump-cafe-supply-chain.web.app/",
     },
+    {
+      category: "HACK Project",
+      title: "Tayaria Stock and Profit Manangement System",
+      description:
+        "Tayaria Stock and Profit Management Application is an application that will manage all the stock arrangements between the sales in real-time to deliver the best experiences to users to supervise their stock to prevent out of stock and calculate all the profit from the daily sales.",
+      techStack: ["NextJs", "Firebase", "NodeJs","GraphQL (Apollo Server)", "PostgreSQL", "Prisma2", "TailwindCSS","ChakraUi"],
+      pictureURL: "./project1.png",
+      githubLink:
+        "https://github.com/oscarchuaweiwen-fsd/-Angular-UMPCafeSupplyChainManagementSystem",
+      websiteLink: "https://ump-cafe-supply-chain.web.app/",
+    }
   ];
 
   return (
